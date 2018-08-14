@@ -5,9 +5,11 @@ import os
 import platform
 import time
 import json
+from pprint import pprint
 from PyPDF2 import PdfFileReader
 
-directory = "C:/Users/rchejf/Documents/Scanned Documents/"
+#directory = "C:/Users/rchejf/Documents/Scanned Documents/"
+directory = "G:/PROVOST/Share/OAP/BR/Professional Development Fund/CRC Scanning July 2018/"
 #directory = "/Users/ricardochejfec/Documents/School/Anthropology/ANTH 540/Readings/"
 
 def main():
@@ -21,7 +23,7 @@ def main():
 		files.append(filename)
 
 	master_dict = create_master_dictionary(files)
-	print(master_dict)
+	pprint(master_dict)
 	pass
 
 def create_master_dictionary(list_of_files):
@@ -37,12 +39,15 @@ def create_master_dictionary(list_of_files):
 
 	master_dict = {}
 	master_dict["Files"] = []
+	i = 0
 	
 	for filename in list_of_files:
+		i = i + 1
+		print(i, "out of", len(list_of_files))
 		filename_full = directory + filename
 		file = open(filename_full, "rb")
 
-		date_created_full = time.ctime(os.path.getctime(filename_full)).split(" ")
+		date_created_full = time.ctime(os.path.getmtime(filename_full)).split(" ")
 		
 		# Windows! 
 		date_created = " ".join([date_created_full[i] for i in [0,2,1,4]])
@@ -55,6 +60,8 @@ def create_master_dictionary(list_of_files):
 		
 
 		if filename not in master_dict["Files"]:
+			
+			
 			master_dict["Files"].append(filename) 
 		 
 			if date_created in master_dict:
