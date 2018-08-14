@@ -4,6 +4,7 @@ import sys
 import os
 import platform
 import time
+import json
 from PyPDF2 import PdfFileReader
 
 directory = "C:/Users/rchejf/Documents/Scanned Documents/"
@@ -35,6 +36,7 @@ def create_master_dictionary(list_of_files):
 	# 	file = open(filename_full, "rb")
 
 	master_dict = {}
+	master_dict["Files"] = []
 	
 	for filename in list_of_files:
 		filename_full = directory + filename
@@ -49,25 +51,30 @@ def create_master_dictionary(list_of_files):
 		# Mac! 
 		# date_created = " ".join([date_created_full[i] for i in [0,3,1,5]])
 		# time_created = date_created_full[4]
+			
+		
 
-		if date_created in master_dict:
-			master_dict[date_created]["Documents"] += 1
-			master_dict[date_created]["Pages"] +=  PdfFileReader(file).getNumPages()
+		if filename not in master_dict["Files"]:
+			master_dict["Files"].append(filename) 
+		 
+			if date_created in master_dict:
+				master_dict[date_created]["Documents"] += 1
+				master_dict[date_created]["Pages"] +=  PdfFileReader(file).getNumPages()
 
-			if (calculate_time_in_between(master_dict[date_created]["First"], time_created) <= 0):
+				if (calculate_time_in_between(master_dict[date_created]["First"], time_created) <= 0):
+					master_dict[date_created]["First"] = time_created
+
+				if (calculate_time_in_between(master_dict[date_created]["Last"], time_created) > 0):
+					master_dict[date_created]["Last"] = time_created
+		    
+			else:
+				master_dict[date_created] = {}
+				master_dict[date_created]["Documents"] = 1 
+				master_dict[date_created]["Pages"] =  PdfFileReader(file).getNumPages()
 				master_dict[date_created]["First"] = time_created
-
-			if (calculate_time_in_between(master_dict[date_created]["Last"], time_created) > 0):
 				master_dict[date_created]["Last"] = time_created
-	    
-		else:
-			master_dict[date_created] = {}
-			master_dict[date_created]["Documents"] = 1 
-			master_dict[date_created]["Pages"] =  PdfFileReader(file).getNumPages()
-			master_dict[date_created]["First"] = time_created
-			master_dict[date_created]["Last"] = time_created
-
-		master_dict[date_created]["Hours"] = calculate_time_in_between(master_dict[date_created]["First"], master_dict[date_created]["Last"])
+	
+			master_dict[date_created]["Hours"] = calculate_time_in_between(master_dict[date_created]["First"], master_dict[date_created]["Last"])
 
 	return master_dict
 
