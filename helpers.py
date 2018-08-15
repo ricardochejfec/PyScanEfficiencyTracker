@@ -1,10 +1,5 @@
 
 
-
-
-
-
-
 def is_pdf(filename):
 	try: 
 		if filename[-3:] == "pdf":
