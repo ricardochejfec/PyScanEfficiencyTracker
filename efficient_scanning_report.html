@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<style>
+			body {background-color: powderblue;margin:0;padding:30}
+			h1   {color: ;}
+			p    {color: red;}
+			#all-stats {border: 2px solid black}
+			#day-log {border: 2px solid black; grid-column: 1 / span 2;}
+			#today {border: 2px solid black}	
+			#grid-container {display: grid; justify-content: space-evenly; grid-gap: 20px; grid-template-columns: 30% 70%; grid-template-rows: 30% 70%}
+
+		</style>
+	</head>
+
+	<body>
+
+		<h1>Efficient Scanning Report</h1>
+
+	<div id="grid-container">
+
+		<div id="today">
+			<h3>Today:</h3>
+			Blah Blah Blah
+		</div>
+		
+		<div id="all-stats">
+			<h3>Hours Worked: {}</h3>
+			<h3>Documents Scanned: {}</h3>
+			<h3>Pages Scanned: {}</h3>
+			<h3>Average Rate: {} pages per hour</h3>
+			<h3>Average Document: {} pages long</h3>
+			<p>
+			<h3>Best Day:</h3>2018/7/30 - Hours: 4 | Documents: 19 | Pages: 2790 | PagesPerDocument: 146 | PagesPerHour: 697 |
+			</p>
+		</div>
+	
+
+		<div id="day-log" style="display:table">		
+
+			<table id="DayLogTable">
+				<tr>
+				<th>Date</th>
+				<th>Hours</th>
+				<th>Documents</th>
+				<th>Pages</th>
+				<th>Pages per Document</th>
+				<th>Pages per Hour</th>
+				</tr>
+
+				<tr>
+				<td>10/09/18</td>
+				<td>4.55</td>
+				<td>7</td>
+				<td>200</th>
+				<td>50</td>
+				<td>67</td>
+				</tr>
+
+			{}
+			</table>
+		</div>
+	</div>
+	</body>
+</html>
+
+
+

@@ -13,9 +13,7 @@ def main(args):
 	create_report(directory_out, master_dict, file_out_name) 
 	#(exit)
 
-def track_pages(directory_in):
-
-	master_dict = {} 
+def track_pages(directory_in, master_dict = {}):
 	
 	for filename in os.listdir(directory_in):
 
@@ -54,7 +52,8 @@ def track_pages(directory_in):
 
 	return master_dict
 
-def create_report():
+def create_report(directory_out="", master_dict, file_out_name="Scanning Efficiency Report"):
+	
 	pass
 
 
