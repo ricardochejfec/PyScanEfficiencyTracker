@@ -1,43 +1,53 @@
 <html>
 	<head>
 		<style>
-			body {background-color: powderblue;margin:0;padding:30}
+			body {background-color: whitesmoke;margin:0;padding:30}
 			h1   {color: ;}
 			p    {color: red;}
-			#all-stats {border: 2px solid black}
-			#day-log {border: 2px solid black; grid-column: 1 / span 2;}
-			#today {border: 2px solid black}	
-			#grid-container {display: grid; justify-content: space-evenly; grid-gap: 20px; grid-template-columns: 30% 70%; grid-template-rows: 30% 70%}
-
+			#title {text-align: center;}
+			#all-stats {border: solid 1px black; padding: 20px 80px; width: 60%; text-align: center; margin: 0 auto;}
+			#day-log {grid-column: 1 / span 2; padding: 20px; margin: 0 auto; column-width: 20px;}
+			#today {border: solid 1px black; padding:20px 60px; width: 40%; text-align: center; margin: 0 auto;}
+			#today-text {line-height: 40px;}	
+			#grid-container {display: grid; justify-content: space-evenly; grid-gap: 20px; grid-template-columns: 40% 60%; grid-template-rows: 30% 70%}
+			th, td {padding: 10px; text-align: center; border-bottom: 1px dotted black}
 		</style>
 	</head>
 
 	<body>
 
-		<h1>Efficient Scanning Report</h1>
+		<h1 id="title">Efficient Scanning Report</h1>
 
 	<div id="grid-container">
 
 		<div id="today">
 			<h3>Today:</h3>
-			Blah Blah Blah
+			<div id="today-text">
+				Hours: <br> {} <br>
+				Documents: <br> {} <br>
+				Pages Scanned: <br> {} <br>
+				Pages/Document: <br> {} <br>
+				Pages/Hour: <br> {} <br>
+			</div>
 		</div>
 		
 		<div id="all-stats">
-			<h3>Hours Worked: {}</h3>
-			<h3>Documents Scanned: {}</h3>
-			<h3>Pages Scanned: {}</h3>
-			<h3>Average Rate: {} pages per hour</h3>
-			<h3>Average Document: {} pages long</h3>
+			<h3>Hours Worked:</h3> {}
+			<h3>Documents Scanned:</h3>{}
+			<h3>Pages Scanned: </h3> {}
+			<h3>Average Rate: </h3> {} pages/hour
+			<h3>Average Document:</h3> {} pages long
 			<p>
-			<h3>Best Day:</h3>2018/7/30 - Hours: 4 | Documents: 19 | Pages: 2790 | PagesPerDocument: 146 | PagesPerHour: 697 |
-			</p>
+			<h3>Best Day:</h3>
+			{}
 		</div>
 	
 
 		<div id="day-log" style="display:table">		
 
 			<table id="DayLogTable">
+
+				
 				<tr>
 				<th>Date</th>
 				<th>Hours</th>
@@ -56,7 +66,7 @@
 				<td>67</td>
 				</tr>
 
-			{}
+			<!-- {} -->
 			</table>
 		</div>
 	</div>

@@ -18,5 +18,15 @@ def calculate_time_in_between(time1, time2):
 	return (end_time - start_time)/60.0
 
 
-def format_day_log(key, day_stats):
+def format_day_log_entry(key, day_stats):
 	retrun "<tr><td>key</td><td>day_stats["Hours"]</td><td>day_stat["Documents"]</td><td>day_stats["Pages"]</td><td>day_stats["PagesPerDocument"]</td><td>day_stats["PagesPerHour"]</td></tr>
+
+def format_best_day(key, day_stats):
+	return "{} <br> {} hours - {} documents - {} pages, <br> {} pages/document -- {} pages/hour.".format(key, day_stats["Hours"],day_stat["Documents"],day_stats["Pages"],day_stats["PagesPerDocument"],ay_stats["PagesPerHour"])
+
+def format_recent_day(hours,documents,pages):
+	pass 
+
+def format_overall_stats(hours,documents,pages):
+	pass
+
