@@ -66,19 +66,20 @@ def create_report(master_dict,directory_out="", file_out_name="Scanning Efficien
 	overall_stats = "" 
 	today_stats = "" 
 	recent_day_log = "" 
-	
+	day_log = "" 
+
 	html_str = ""
 
-	for key in sorted(list_of_workdays):
-		workday = helpers.format_day_log_entry(key, master_dict[key])
+	for key, value in sorted(list_of_workdays.iteritems()):
+		workday = helpers.format_day_log_entry(key, value)
 		day_log += workday 
 
 		total_hours += list_of_workdays[key]["Hours"]
 		total_documents += list_of_workdays[key]["Documents"]
 		total_pages += list_of_workdays[key]["Pages"]
-		if (list_of_workdays[key]["PagesPerHour"] > most_efficient_rate):
-			most_efficient_rate = list_of_workdays[key]["PagesPerHour"]
-			bestday = helpers.format_best_day(key, list_of_workdays[key]["Hours"],list_of_workdays[key]["Documents"],list_of_workdays[key]["Pages"])
+		if (float(list_of_workdays[key]["Pages"])/list_of_workdays[key]["Hours"] > most_efficient_rate):
+			most_efficient_rate = float(list_of_workdays[key]["Pages"])/list_of_workdays[key]["Hours"]
+			bestday = helpers.format_best_day(key, value)
 
 	recent_day = sorted(list_of_workdays,reverse="True")[0]
 	recent_day_log = helpers.format_recent_stats(list_of_workdays[recent_day]["Hours"],list_of_workdays[recent_day]["Documents"],list_of_workdays[recent_day]["Pages"])

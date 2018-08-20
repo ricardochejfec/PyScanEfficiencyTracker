@@ -19,10 +19,10 @@ def calculate_time_in_between(time1, time2):
 
 
 def format_day_log_entry(key, day_stats):
-	return """<tr><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>""".format(key,day_stats["Hours"], day_stat["Documents"], day_stats["Pages"], day_stats["PagesPerDocument"], day_stats["PagesPerHour"])
+	return """<tr><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>""".format(key,day_stats["Hours"], day_stats["Documents"], day_stats["Pages"], round(float(day_stats["Pages"])/day_stats["Documents"],3), round(float(day_stats["Pages"])/day_stats["Hours"],3))
 
 def format_best_day(key, day_stats):
-	return "{} <br> {} hours - {} documents - {} pages, <br> {} pages/document -- {} pages/hour.".format(key, day_stats["Hours"],day_stat["Documents"],day_stats["Pages"],day_stats["PagesPerDocument"],ay_stats["PagesPerHour"])
+	return "{} <br> {} hours - {} documents - {} pages, <br> {} pages/document -- {} pages/hour.".format(key, day_stats["Hours"],day_stats["Documents"],day_stats["Pages"],round(float(day_stats["Pages"])/day_stats["Documents"],3), round(float(day_stats["Pages"])/day_stats["Hours"],3))
 
 def format_recent_day(hours,documents,pages):
 	return """<div id="today"><h3>Today:</h3><div id="today-text"> Hours: <br> {} <br> Documents: <br> {} <br> Pages Scanned: <br> {} <br> Pages/Document: <br> {} <br>Pages/Hour: <br> {} <br></div></div>""".format(hours, documents, pages, round(float(pages)/documents,3), round(float(pages)/hours)) 

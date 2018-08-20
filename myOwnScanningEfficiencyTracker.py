@@ -14,7 +14,7 @@ directory_out = "C:/Users/rchejf/Documents/Scanned Documents/"
 def main():
 	master_dict = PyScanEfficiencyTracker.track_pages(directory_in)
 	pprint(master_dict)
-	PyScanEfficiencyTracker.create_report(directory_out, master_dict, "Scanni ")  
+	PyScanEfficiencyTracker.create_report(master_dict)  
 
 if __name__ == '__main__':
     sys.exit(main())
