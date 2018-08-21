@@ -4,6 +4,9 @@ import time
 from PyPDF2 import PdfFileReader
 import helpers
 import webbrowser 
+import time
+
+start_time = time.time()
 
 def main(args):
 	directory_in = args[0]
@@ -64,14 +67,13 @@ def create_report(master_dict,directory_out="", file_out_name="Scanning Efficien
 	list_of_workdays = master_dict	
 
 	overall_stats = "" 
-	today_stats = "" 
 	recent_day_log = "" 
 	day_log = "" 
 
 	html_str = ""
 
-	for key, value in sorted(list_of_workdays.iteritems()):
-		workday = helpers.format_day_log_entry(key, value)
+	for key in sorted(list_of_workdays, key=lambda date:helpers.sorting_helper(date)):
+		workday = helpers.format_day_log_entry(key, list_of_workdays[key])
 		day_log += workday 
 
 		total_hours += list_of_workdays[key]["Hours"]
@@ -79,19 +81,23 @@ def create_report(master_dict,directory_out="", file_out_name="Scanning Efficien
 		total_pages += list_of_workdays[key]["Pages"]
 		if (float(list_of_workdays[key]["Pages"])/list_of_workdays[key]["Hours"] > most_efficient_rate):
 			most_efficient_rate = float(list_of_workdays[key]["Pages"])/list_of_workdays[key]["Hours"]
-			bestday = helpers.format_best_day(key, value)
+			bestday = helpers.format_best_day(key, list_of_workdays[key])
 
-	recent_day = sorted(list_of_workdays,reverse="True")[0]
-	recent_day_log = helpers.format_recent_stats(list_of_workdays[recent_day]["Hours"],list_of_workdays[recent_day]["Documents"],list_of_workdays[recent_day]["Pages"])
+		
+
+	recent_day = sorted(list_of_workdays,key=lambda date:helpers.sorting_helper(date), reverse=True)[0]
+	recent_day_log = helpers.format_recent_day(list_of_workdays[recent_day]["Hours"],list_of_workdays[recent_day]["Documents"],list_of_workdays[recent_day]["Pages"])
 
 	overall_stats = helpers.format_overall_stats(total_hours, total_documents, total_pages, bestday)
-	html_str = format_html_str(overall_stats,today_stats,day_log)
+	html_str = helpers.format_html_str(overall_stats,recent_day_log,day_log)
 
 	f = open("efficient_scanning_report.html", "w")
 	f.write(html_str)
 	f.close()
-	filename = "C://Users/rchejf/Documents/Efficient Scanning/efficient_scanning_report.html"
-	webbrowser.open(filename)
+	filename = "C://Users/rchejf/Documents/Efficient Scanning/PyScanEfficiencyTracker/efficient_scanning_report.html"
+	webbrowser.open_new_tab(filename)
+	print("--- %s seconds ---" % (time.time() - start_time))
+
 
 
 if __name__ == '__main__':

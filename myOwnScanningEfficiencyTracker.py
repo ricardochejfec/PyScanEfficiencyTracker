@@ -5,8 +5,8 @@ from pprint import pprint
 import PyScanEfficiencyTracker
 
 
-directory_in = "C:/Users/rchejf/Documents/Scanned Documents/"
-#directory_in = "G:/PROVOST/Share/OAP/BR/Professional Development Fund/CRC Scanning July 2018/"
+#directory_in = "C:/Users/rchejf/Documents/Scanned Documents/"
+directory_in = "G:/PROVOST/Share/OAP/BR/Professional Development Fund/CRC Scanning July 2018/"
 #directory_in = "/Users/ricardochejfec/Documents/School/Anthropology/ANTH 540/Readings/"
 
 directory_out = "C:/Users/rchejf/Documents/Scanned Documents/"
