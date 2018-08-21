@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<style>
+			body {background-color: whitesmoke;margin:0;padding:30}
+			h1   {color: ;}
+			p    {color: red;}
+			#title {text-align: center;}
+			#all-stats {border: solid 1px black; padding: 20px 80px; width: 60%; text-align: center; margin: 0 auto;}
+			#day-log {grid-column: 1 / span 2; padding: 20px; margin: 0 auto; column-width: 20px;}
+			#today {border: solid 1px black; padding:20px 60px; width: 40%; text-align: center; margin: 0 auto;}
+			#today-text {line-height: 40px;}	
+			#grid-container {display: grid; justify-content: space-evenly; grid-gap: 20px; grid-template-columns: 40% 60%; grid-template-rows: 30% 70%}
+			th, td {padding: 10px; text-align: center; border-bottom: 1px dotted black}
+		</style>
+	</head>
+	<body>
+		<h1 id="title">Efficient Scanning Report</h1>
+	<div id="grid-container">
+		
+		{recent-day}
+		
+		{overall-stats}
+		
+
+		
+		<div id="day-log" style="display:table">		
+			<table id="DayLogTable">
+				<tr>
+				<th>Date</th>
+				<th>Hours</th>
+				<th>Documents</th>
+				<th>Pages</th>
+				<th>Pages per Document</th>
+				<th>Pages per Hour</th>
+				</tr>
+				
+				{table-entries}
+
+
+			</table>
+		</div>
+		</div>
+	</body>
+</html>
