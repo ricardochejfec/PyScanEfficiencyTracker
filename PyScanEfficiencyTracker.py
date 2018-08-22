@@ -6,7 +6,7 @@ import helpers
 import webbrowser 
 import time
 
-start_time = time.time()
+#start_time = time.time()
 
 def main(args):
 	directory_in = args[0]
@@ -18,10 +18,15 @@ def main(args):
 	#(exit)
 
 def track_pages(directory_in, master_dict = {}):
-	
+
+	if not master_dict:
+		master_dict["Filenames"] = []
+
 	for filename in os.listdir(directory_in):
 
-		if helpers.is_pdf(filename):
+		if helpers.is_pdf(filename) and filename not in master_dict["Filenames"]:
+			
+			
 			filename_full = directory_in + filename
 			file = open(filename_full, "rb")
 
@@ -51,20 +56,21 @@ def track_pages(directory_in, master_dict = {}):
 				master_dict[date_created]["Pages"] =  PdfFileReader(file).getNumPages()
 				master_dict[date_created]["First"] = time_created
 				master_dict[date_created]["Last"] = time_created
+			master_dict["Filenames"].append(filename)
 			file.close()
 	
 			master_dict[date_created]["Hours"] = helpers.calculate_time_in_between(master_dict[date_created]["First"], master_dict[date_created]["Last"])
 
 	return master_dict
 
-def create_report(master_dict,directory_out="", file_out_name="Scanning Efficiency Report"):
+def create_report(master_dict, directory_out="", file_out_name="Scanning Efficiency Report"):
 	
 	total_hours = 0
 	total_documents = 0
 	total_pages = 0 
 	bestday= ""
 	most_efficient_rate = 0
-	list_of_workdays = master_dict	
+	list_of_workdays = dict((i,master_dict[i]) for i in master_dict if i!="Filenames")	
 
 	overall_stats = "" 
 	recent_day_log = "" 
@@ -96,7 +102,8 @@ def create_report(master_dict,directory_out="", file_out_name="Scanning Efficien
 	f.close()
 	filename = "C://Users/rchejf/Documents/Efficient Scanning/PyScanEfficiencyTracker/efficient_scanning_report.html"
 	webbrowser.open_new_tab(filename)
-	print("--- %s seconds ---" % (time.time() - start_time))
+	
+	#print("--- %s seconds ---" % (time.time() - start_time))
 
 
 

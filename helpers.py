@@ -56,15 +56,15 @@ def format_best_day(key, day_stats):
 def format_recent_day(hours,documents,pages):
 	if hours == 0:
 		hours = 0.1
-	return """<div id="today"><h3>Today:</h3><div id="today-text"> Hours: <br> {} <br> Documents: <br> {} <br> Pages Scanned: <br> {} <br> Pages/Document: <br> {} <br>Pages/Hour: <br> {} <br></div></div>""".format(round(hours,2), documents, pages, round(float(pages)/documents,3), round(float(pages)/hours)) 
+	return """<div id="today"><h3>Today:</h3><br><div id="today-text"> Hours: <br> {} <br> Documents: <br> {} <br> Pages: <br> {} <br> Pages/Document: <br> {} <br>Pages/Hour: <br> {} <br></div></div>""".format(round(hours,2), documents, pages, round(float(pages)/documents,3), round(float(pages)/hours)) 
 
 def format_overall_stats(hours,documents,pages, bestday):
 	return """<div id="all-stats">
 			<h3>Hours Worked:</h3> {}
 			<h3>Documents Scanned:</h3>{}
 			<h3>Pages Scanned: </h3> {}
-			<h3>Average Rate: </h3> {} pages/hour
-			<h3>Average Document:</h3> {} pages long
+			<h3>Average Document: </h3> {} pages
+			<h3>Average Rate:</h3> {} pages/hour
 			<p>
 			<h3>Best Day:</h3>
 			{}</div>""".format(round(hours,2), documents, pages, round(float(pages)/documents,1), round(float(pages)/hours, 1), bestday)
