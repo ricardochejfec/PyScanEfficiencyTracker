@@ -3,7 +3,6 @@
 		<style>
 			body {background-color: whitesmoke;margin:0;padding:30}
 			h1   {color: ;}
-			p    {color: red;}
 			#title {text-align: center;}
 			#all-stats {border: solid 1px black; padding: 20px 80px; width: 60%; text-align: center; margin: 0 auto;}
 			#day-log {grid-column: 1 / span 2; padding: 20px; margin: 0 auto; column-width: 20px;}
@@ -11,6 +10,7 @@
 			#today-text {line-height: 40px;}	
 			#grid-container {display: grid; justify-content: space-evenly; grid-gap: 20px; grid-template-columns: 40% 60%; grid-template-rows: 30% 70%}
 			th, td {padding: 10px; text-align: center; border-bottom: 1px dotted black}
+			th {cursor: pointer;}
 		</style>
 	</head>
 	<body>
@@ -26,14 +26,14 @@
 		<div id="day-log" style="display:table">		
 			<table id="DayLogTable">
 				<tr>
-				<th>Date</th>
-				<th>Hours</th>
-				<th>Documents</th>
-				<th>Pages</th>
-				<th>Pages per Document</th>
-				<th>Pages per Hour</th>
+				<th onclick ="sortTable(0, 1)">Date</th>
+				<th onclick ="sortTable(1, 0)">Hours</th>
+				<th onclick ="sortTable(2, 0)">Documents</th>
+				<th onclick ="sortTable(3, 0)">Pages</th>
+				<th onclick ="sortTable(4, 0)">Pages per Document</th>
+				<th onclick ="sortTable(5, 0)">Pages per Hour</th>
 				</tr>
-				
+
 				{table-entries}
 
 
@@ -41,4 +41,108 @@
 		</div>
 		</div>
 	</body>
+
+<script>
+function sortTable(n, m) {
+
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount, xLTy = 0;
+  table = document.getElementById("DayLogTable");
+  switching = true;
+
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+
+  /*Make a loop that will continue until
+  no switching has been done:*/
+
+  while (switching) {
+
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (compareArgs(x.innerHTML,y.innerHTML,m)) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+	}
+      } else if (dir == "desc") {
+        if (compareArgs(y.innerHTML,x.innerHTML,m)) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+
+function compareArgs(x,y,mod){
+  var xLTy = false;
+  if (mod == 1){
+    xLTy = compareDates(x,y);
+  } else {
+    xLTy = (Number(x) > Number(y));
+  }
+  return xLTy;
+}
+
+function compareDates(x,y){
+  date1 = x.split(" ");
+  date1_v = Number(date1[1]) + calculateMonth(date1[2]) + + (Number(date1[3])*365)
+  date2 = y.split(" ");
+  date2_v = Number(date2[1]) + calculateMonth(date2[2])  + (Number(date2[3])*365)
+  console.log(date1_v)
+  return (date1_v > date2_v)
+}
+
+function calculateMonth(month){
+  switch(month){
+    case "Jan": return 1 * 31;
+    case "Feb": return 2 * 31;
+    case "Mar": return 3 * 31; 
+    case "Apr": return 4 * 31;
+    case "May": return 5 * 31;
+    case "Jun": return 6 * 31;
+    case "Jul": return 7 * 31;
+    case "Aug": return 8 * 31;
+    case "Sep": return 9 * 31;
+    case "Oct": return 10 * 31;
+    case "Nov": return 11 * 31;
+    case "Dec": return 12 * 31;
+  }
+}
+
+</script>
+
+
+
+
+
 </html>

@@ -10,14 +10,23 @@ import time
 
 done = False 
 
-#directory_in = "C:/Users/rchejf/Documents/Scanned Documents/"
-directory_in = "G:/PROVOST/Share/OAP/BR/Professional Development Fund/CRC Scanning July 2018/"
+#directory_in = "G:/PROVOST/Share/OAP/BR/Professional Development Fund/CRC Scanning July 2018/"
 #directory_in = "/Users/ricardochejfec/Documents/School/Anthropology/ANTH 540/Readings/"
 
-directory_out = "C:/Users/rchejf/Documents/Scanned Documents/"
+#directory_in = "C:/Users/rchejf/Documents/Scanned Documents/"
 
-def main():
-
+def main(args):
+	
+	if args:
+		if args[0] == "-w":
+			directory_in = "G:/PROVOST/Share/OAP/BR/Professional Development Fund/CRC Scanning July 2018/"
+		elif args[0] == "-t":
+			directory_in = "C:/Users/rchejf/Documents/Scanned Documents/"
+		elif args[0] == "-tm":
+			directory_in = "/Users/ricardochejfec/Documents/School/Anthropology/ANTH 540/Readings/"
+	else:
+		directory_in = "G:/PROVOST/Share/OAP/BR/Professional Development Fund/CRC Scanning July 2018/"
+		
 	#----------Animation
 	global done
 	print("")
@@ -57,4 +66,4 @@ def animate():
 	
 
 if __name__ == '__main__':
-    sys.exit(main())
+    sys.exit(main(sys.argv[1:]))
