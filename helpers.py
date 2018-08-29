@@ -84,6 +84,7 @@ def format_html_str(overall_stats,today_stats,day_log):
 			#today-text {{line-height: 40px;}}	
 			#grid-container {{display: grid; justify-content: space-evenly; grid-gap: 20px; grid-template-columns: 40% 60%; grid-template-rows: 30% 70%}}
 			th, td {{padding: 10px; text-align: center; border-bottom: 1px dotted black}}
+			th {{cursor: pointer;}}
 		</style>
 	</head>
 	<body>

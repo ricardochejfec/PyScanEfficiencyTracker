@@ -11,19 +11,20 @@
 			#today-text {line-height: 40px;}	
 			#grid-container {display: grid; justify-content: space-evenly; grid-gap: 20px; grid-template-columns: 40% 60%; grid-template-rows: 30% 70%}
 			th, td {padding: 10px; text-align: center; border-bottom: 1px dotted black}
+			th {cursor: pointer;}
 		</style>
 	</head>
 	<body>
 		<h1 id="title">Efficient Scanning Report</h1>
 	<div id="grid-container">
-		<div id="today"><h3>Today:</h3><br><div id="today-text"> Hours: <br> 1.78 <br> Documents: <br> 22 <br> Pages: <br> 1522 <br> Pages/Document: <br> 69.182 <br>Pages/Hour: <br> 853.0 <br></div></div>
+		<div id="today"><h3>Today:</h3><br><div id="today-text"> Hours: <br> 1.47 <br> Documents: <br> 21 <br> Pages: <br> 990 <br> Pages/Document: <br> 47.143 <br>Pages/Hour: <br> 675.0 <br></div></div>
 		<div>
 		<div id="all-stats">
-			<h3>Hours Worked:</h3> 43.38
-			<h3>Documents Scanned:</h3>541
-			<h3>Pages Scanned: </h3> 57336
-			<h3>Average Document: </h3> 106.0 pages
-			<h3>Average Rate:</h3> 1321.6 pages/hour
+			<h3>Hours Worked:</h3> 44.85
+			<h3>Documents Scanned:</h3>562
+			<h3>Pages Scanned: </h3> 58326
+			<h3>Average Document: </h3> 103.8 pages
+			<h3>Average Rate:</h3> 1300.5 pages/hour
 			<p>
 			<h3>Best Day:</h3>
 			Mon 30 Jul 2018 <br> 2.93 hours - 38 documents - 5580 pages, <br> 146.842 pages/document -- 1902.3 pages/hour.</div>
@@ -38,7 +39,7 @@
 				<th onclick ="sortTable(4, 0)">Pages per Document</th>
 				<th onclick ="sortTable(5, 0)">Pages per Hour</th>
 				</tr>
-				<tr><td>Mon 23 Jul 2018</td><td>3.15</td><td>30</td><td>3872</td><td>129.067</td><td>1229.2</td></tr><tr><td>Tue 24 Jul 2018</td><td>2.38</td><td>26</td><td>3724</td><td>143.231</td><td>1562.5</td></tr><tr><td>Wed 25 Jul 2018</td><td>2.97</td><td>58</td><td>5394</td><td>93.0</td><td>1818.2</td></tr><tr><td>Thu 26 Jul 2018</td><td>2.2</td><td>44</td><td>3626</td><td>82.409</td><td>1648.2</td></tr><tr><td>Mon 30 Jul 2018</td><td>2.93</td><td>38</td><td>5580</td><td>146.842</td><td>1902.3</td></tr><tr><td>Tue 31 Jul 2018</td><td>2.73</td><td>32</td><td>4468</td><td>139.625</td><td>1634.6</td></tr><tr><td>Wed 01 Aug 2018</td><td>2.78</td><td>32</td><td>4760</td><td>148.75</td><td>1710.2</td></tr><tr><td>Thu 02 Aug 2018</td><td>2.37</td><td>41</td><td>3783</td><td>92.268</td><td>1598.5</td></tr><tr><td>Tue 07 Aug 2018</td><td>2.47</td><td>40</td><td>3016</td><td>75.4</td><td>1222.7</td></tr><tr><td>Wed 08 Aug 2018</td><td>0.78</td><td>18</td><td>1230</td><td>68.333</td><td>1570.2</td></tr><tr><td>Thu 09 Aug 2018</td><td>0.97</td><td>6</td><td>1346</td><td>224.333</td><td>1392.4</td></tr><tr><td>Tue 14 Aug 2018</td><td>1.35</td><td>8</td><td>1602</td><td>200.25</td><td>1186.7</td></tr><tr><td>Wed 15 Aug 2018</td><td>2.47</td><td>26</td><td>2662</td><td>102.385</td><td>1079.2</td></tr><tr><td>Thu 16 Aug 2018</td><td>2.05</td><td>40</td><td>2082</td><td>52.05</td><td>1015.6</td></tr><tr><td>Mon 20 Aug 2018</td><td>1.9</td><td>22</td><td>1364</td><td>62.0</td><td>717.9</td></tr><tr><td>Tue 21 Aug 2018</td><td>1.93</td><td>24</td><td>2390</td><td>99.583</td><td>1236.2</td></tr><tr><td>Wed 22 Aug 2018</td><td>2.0</td><td>11</td><td>1557</td><td>141.545</td><td>778.5</td></tr><tr><td>Fri 24 Aug 2018</td><td>2.03</td><td>9</td><td>1272</td><td>141.333</td><td>625.6</td></tr><tr><td>Mon 27 Aug 2018</td><td>2.13</td><td>14</td><td>2086</td><td>149.0</td><td>977.8</td></tr><tr><td>Tue 28 Aug 2018</td><td>1.78</td><td>22</td><td>1522</td><td>69.182</td><td>853.5</td></tr>
+				<tr><td>Mon 23 Jul 2018</td><td>3.15</td><td>30</td><td>3872</td><td>129.067</td><td>1229.2</td></tr><tr><td>Tue 24 Jul 2018</td><td>2.38</td><td>26</td><td>3724</td><td>143.231</td><td>1562.5</td></tr><tr><td>Wed 25 Jul 2018</td><td>2.97</td><td>58</td><td>5394</td><td>93.0</td><td>1818.2</td></tr><tr><td>Thu 26 Jul 2018</td><td>2.2</td><td>44</td><td>3626</td><td>82.409</td><td>1648.2</td></tr><tr><td>Mon 30 Jul 2018</td><td>2.93</td><td>38</td><td>5580</td><td>146.842</td><td>1902.3</td></tr><tr><td>Tue 31 Jul 2018</td><td>2.73</td><td>32</td><td>4468</td><td>139.625</td><td>1634.6</td></tr><tr><td>Wed 01 Aug 2018</td><td>2.78</td><td>32</td><td>4760</td><td>148.75</td><td>1710.2</td></tr><tr><td>Thu 02 Aug 2018</td><td>2.37</td><td>41</td><td>3783</td><td>92.268</td><td>1598.5</td></tr><tr><td>Tue 07 Aug 2018</td><td>2.47</td><td>40</td><td>3016</td><td>75.4</td><td>1222.7</td></tr><tr><td>Wed 08 Aug 2018</td><td>0.78</td><td>18</td><td>1230</td><td>68.333</td><td>1570.2</td></tr><tr><td>Thu 09 Aug 2018</td><td>0.97</td><td>6</td><td>1346</td><td>224.333</td><td>1392.4</td></tr><tr><td>Tue 14 Aug 2018</td><td>1.35</td><td>8</td><td>1602</td><td>200.25</td><td>1186.7</td></tr><tr><td>Wed 15 Aug 2018</td><td>2.47</td><td>26</td><td>2662</td><td>102.385</td><td>1079.2</td></tr><tr><td>Thu 16 Aug 2018</td><td>2.05</td><td>40</td><td>2082</td><td>52.05</td><td>1015.6</td></tr><tr><td>Mon 20 Aug 2018</td><td>1.9</td><td>22</td><td>1364</td><td>62.0</td><td>717.9</td></tr><tr><td>Tue 21 Aug 2018</td><td>1.93</td><td>24</td><td>2390</td><td>99.583</td><td>1236.2</td></tr><tr><td>Wed 22 Aug 2018</td><td>2.0</td><td>11</td><td>1557</td><td>141.545</td><td>778.5</td></tr><tr><td>Fri 24 Aug 2018</td><td>2.03</td><td>9</td><td>1272</td><td>141.333</td><td>625.6</td></tr><tr><td>Mon 27 Aug 2018</td><td>2.13</td><td>14</td><td>2086</td><td>149.0</td><td>977.8</td></tr><tr><td>Tue 28 Aug 2018</td><td>1.78</td><td>22</td><td>1522</td><td>69.182</td><td>853.5</td></tr><tr><td>Wed 29 Aug 2018</td><td>1.47</td><td>21</td><td>990</td><td>47.143</td><td>675.0</td></tr>
 			</table></div></div></body><script>
 function sortTable(n, m) {
 
