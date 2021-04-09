@@ -10,22 +10,21 @@ import time
 
 done = False 
 
-#directory_in = "G:/PROVOST/Share/OAP/BR/Professional Development Fund/CRC Scanning July 2018/"
-#directory_in = "/Users/ricardochejfec/Documents/School/Anthropology/ANTH 540/Readings/"
-
-#directory_in = "C:/Users/rchejf/Documents/Scanned Documents/"
+dir1 = "C:/blah/blah"
+dir2 = "C:/blah/blah"
+dir3 = "C:/blah/blah"
 
 def main(args):
 	
 	if args:
 		if args[0] == "-w":
-			directory_in = "G:/PROVOST/Share/OAP/BR/Professional Development Fund/CRC Scanning July 2018/"
+			directory_in = dir1
 		elif args[0] == "-t":
-			directory_in = "C:/Users/rchejf/Documents/Scanned Documents/"
+			directory_in = dir2
 		elif args[0] == "-tm":
-			directory_in = "/Users/ricardochejfec/Documents/School/Anthropology/ANTH 540/Readings/"
+			directory_in = dir3
 	else:
-		directory_in = "G:/PROVOST/Share/OAP/BR/Professional Development Fund/CRC Scanning July 2018/"
+		directory_in = "C:/blah/blah"
 		
 	#----------Animation
 	global done
